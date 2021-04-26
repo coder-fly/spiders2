@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="text" name="" id="input">
+<button onclick="sign()">获取</button>
+</body>
+<script src="crawler.js"></script>
+<script>
+    function sign() {
+        var url = document.getElementById("input").value;
+        signature = window.byted_acrawler.sign({"url": url})
+        alert(signature)
+
+    }
+</script>
+
+</html>
