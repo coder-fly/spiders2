@@ -15,6 +15,7 @@
 - [信用中国陕西](/spiders/信用中国陕西)
 - [晋金所](/spiders/晋金所)
 - [大连产权交易所](/spiders/大连产权交易所)
+- [BOSS直聘(不完全，生成的cookie有无效的)](/spiders/boss直聘)
 
 ## plugins
 - parse_ttf

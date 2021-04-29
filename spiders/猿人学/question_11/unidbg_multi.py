@@ -71,7 +71,6 @@ class Spider:
         for i in range(10000):
             sign = subprocess.getoutput('java -jar unidbg-android.jar {}'.format(i))
             url = self.url.format(i, sign)
-            print(url)
             url_queue.put(url)
 
 
