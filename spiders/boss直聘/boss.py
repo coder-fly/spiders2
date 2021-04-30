@@ -55,9 +55,9 @@ window.navigator = {
 }
 const top = {}
 top.location = {
-    "href":["https://www.zhipin.com/web/common/security-check.html?seed=xBltdUuKhXFJZDXxYXmUSMIIMrWq9D0yeJJs9m3rs90%3D&name=70c092c1&ts=1619602130858&callbackUrl=%2Fc101010100-p100109%2F&srcReferer=",
+    "href":["$url",
 
-    "https://www.zhipin.com/web/common/security-check.html?seed=xBltdUuKhXFJZDXxYXmUSMIIMrWq9D0yeJJs9m3rs90%3D&name=70c092c1&ts=1619602130858&callbackUrl=%2Fc101010100-p100109%2F&srcReferer=",
+    "$url",
     ]
 }
 
@@ -94,10 +94,11 @@ function getCookie() {
         name = re.search(r'&name=(\S*?)&', location).group(1)
         js_url = 'https://www.zhipin.com/web/common/security-js/{}.js'.format(name)
         content = self.session.get(js_url).text
-        content = re.sub(r"var cE='qweasdzxc';", "var cE = 'qweasdzxc';eval(cv);", content)
+        content=re.sub(r"(cC=cG\(cC\)[\s\S]*?undefined\)\)\);)", lambda x:x.group(1) + 'var cE="w.zhipin.com";', content)
         fulljs = self.header.replace('$url', security_url) + content + self.footer
         self.ctx = execjs.compile(fulljs)
         __zp_stoken__ = self.ctx.call('getCookie')
+        print(__zp_stoken__)
         for i in range(10):
             cookies = {
                 "__zp_stoken__": quote(__zp_stoken__),
@@ -107,7 +108,7 @@ function getCookie() {
                 "referer": security_url
             })
             response = self.session.get(url)
-            if not response.url.startswith("https://www.zhipin.com/c101010100-p100109"):
+            if response.url.startswith("https://www.zhipin.com/web/common/security-check.html") :
                 __zp_stoken__ = self.ctx.call("getCookie")
                 print("faild")
             else:
