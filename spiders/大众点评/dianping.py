@@ -8,13 +8,13 @@
 @desc: 大众点评字体解析，该网站自定义字体较多，如果每次都人工录入映射表，很繁琐
 """
 import requests
-from plugins.parse_ttf.parse_ttf import ParseTTFFont
 
+from plugins.font_parse.font_parse import FontParser
 class Dianping:
 
     def parse_fonts(self, url):
         content = requests.get(url).content
-        fonts = ParseTTFFont(content).parse_fonts('dazhong')
+        fonts = FontParser(content, offset=2, project="dazhong", ocr_always=False,sort=True).parse()
         return fonts
 
 if __name__ == '__main__':

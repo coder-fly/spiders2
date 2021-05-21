@@ -98,7 +98,6 @@ function getCookie() {
         fulljs = self.header.replace('$url', security_url) + content + self.footer
         self.ctx = execjs.compile(fulljs)
         __zp_stoken__ = self.ctx.call('getCookie')
-        print(__zp_stoken__)
         for i in range(10):
             cookies = {
                 "__zp_stoken__": quote(__zp_stoken__),

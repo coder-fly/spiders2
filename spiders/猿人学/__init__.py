@@ -10,11 +10,10 @@
 import requests
 
 def get_session():
-    headers = {'Host': 'match.猿人学.com',
+    headers = {
                'Connection': 'keep-alive',
-               'Content-Length': '0',
                # 'Cookie':"sessionid=yenozzgrng6zhim4gwm1jcii9cdlgch9",
-               'User-Agent': '猿人学.project',
+               'User-Agent': 'yuanrenxue.project',
                'Accept': '*/*', 'Origin': 'http://match.yuanrenxue.com',
                'Referer': 'http://match.yuanrenxue.com/match/3', 'Accept-Encoding': 'gzip, deflate',
                'Accept-Language': 'zh-CN,zh;q=0.9'}
